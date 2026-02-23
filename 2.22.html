@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+    <title>Title</title>
+   <style>
+       ul{
+           background: ghostwhite;
+       }
+        li {
+            display: inline-block;  /* 行内块元素 */
+            margin-right: 20px; /* 可选：设置li之间的间距 */
+            /* 可选：背景色，方便查看效果 */
+        }
+        .but{
+          color:red;
+        }
+    </style>
+</head>
+<body>
+<script src="hero.js"></script>
+<ul  >
+  <li class="lli"><button class="but" id="0" >全部</button></li>
+  <li class="lli"><button id="1">tanke</button></li>
+  <li class="lli"><button id="2">2</button></li>
+  <li class="lli"><button id="3">3</button></li>
+  <li class="lli"><button id="4">4</button></li>
+  <li class="lli"><button id="5">5</button></li>
+  <li class="lli"><button id="6">6</button></li>
+</ul >
+<ul class="uul">
+</ul>
+<script>
+    function fn(arr){
+        if(arr==0) {
+            let s=""
+            for(let i of heroArr) {
+            let L=`
+            <li>
+                <a href="#" target="_blank"><img src="${i.icon}" width="90" height="90" alt="${i.name}"/>${i.name}</a>
+            </li>`
+                s+=L;
+    }
+            document.querySelector(".uul").innerHTML=s;
+        }
+        else {
+            let s=""
+            for(let i of heroArr) {
+                if(i.hero_type==arr) {
+                    let L=`
+            <li>
+                <a href="#" target="_blank"><img src="${i.icon}" width="90" height="90" alt="${i.name}"/>${i.name}</a>
+            </li>`
+                s+=L;
+    }
+            document.querySelector(".uul").innerHTML=s;
+                }
+            }
+    }
+
+    let butAll = document.querySelectorAll("button")
+    for (let i of butAll) {
+        i.onclick = function () {
+            for (let j of butAll) {
+          j.classList.remove("but")
+      }
+      i.classList.add("but")
+      let a=i.id
+      fn(a)
+  }
+}
+
+</script>
+</body>
+</html>
